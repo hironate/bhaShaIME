@@ -1,6 +1,7 @@
 {
   "name": "@bhashaime/core",
   "version": "1.0.0",
+  "type": "module",
   "description": "A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -38,7 +39,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@bhashaime/languages": "file:languages"
+    "@bhashaime/languages": "file:./languages"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
@@ -55,6 +56,7 @@
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.0",
     "typescript": "^5.0.0"
   },
   "repository": {

@@ -1,6 +1,7 @@
 {
   "name": "@bhashaime/languages",
   "version": "1.0.0",
+  "type": "module",
   "description": "Language types and configurations for BhaSha transliteration system",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -37,6 +38,7 @@
     "eslint": "^8.0.0",
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.0.0",
+    "tslib": "^2.6.0",
     "typescript": "^5.0.0"
   },
   "repository": {
