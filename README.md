@@ -2,11 +2,6 @@
 
 A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more. Built from scratch in TypeScript with comprehensive test coverage.
 
-## Packages
-
-- **@bhashaIME/core** - Main React components and hooks for transliteration
-- **@bhashaIME/languages** - Language types and configurations
-
 ## Features
 
 - 🚀 **Real-time transliteration** from English to Indian languages
@@ -19,20 +14,10 @@ A powerful React plugin for real-time Indian language transliteration with suppo
 
 ## Installation
 
-### Core Package
-
 ```bash
 npm install @bhashaIME/core
 # or
 yarn add @bhashaIME/core
-```
-
-### Language Types (Optional)
-
-```bash
-npm install @bhashaIME/languages
-# or
-yarn add @bhashaIME/languages
 ```
 
 ## Quick Start
@@ -40,8 +25,7 @@ yarn add @bhashaIME/languages
 ### Using the Hook
 
 ```tsx
-import { useBhaShaIME } from '@bhashaIME/core';
-import { SupportedLanguage } from '@bhashaIME/languages';
+import { useBhaShaIME, SupportedLanguage } from '@bhashaIME/core';
 
 function MyComponent() {
   const { input, output, setInput, setLanguage } = useBhaShaIME({
@@ -99,9 +83,9 @@ function MyComponent() {
 
 ## API Reference
 
-### @bhashaIME/languages
+### Language Types and Utilities
 
-The languages package provides type definitions and utilities for supported languages:
+All language types and utilities are now included in the main package:
 
 ```typescript
 import {
@@ -111,7 +95,7 @@ import {
   getLanguageConfig,
   getSupportedLanguages,
   isSupportedLanguage,
-} from '@bhashaIME/languages';
+} from '@bhashaIME/core';
 
 // Type for supported languages
 type SupportedLanguage = 'gujarati' | 'hindi' | 'english';
@@ -279,7 +263,7 @@ interface BhaShaTextareaProps extends UseBhaShaIMEOptions {
 
 ```tsx
 import { useRef } from 'react';
-import { BhaShaInput, BhaShaInputRef } from 'bhashaime';
+import { BhaShaInput, BhaShaInputRef } from '@bhashaIME/core';
 
 function MyComponent() {
   const inputRef = useRef<BhaShaInputRef>(null);
