@@ -1,5 +1,5 @@
 {
-  "name": "@bhashaIME/core",
+  "name": "@bhashaime/core",
   "version": "1.0.0",
   "description": "A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more",
   "main": "dist/index.js",
@@ -36,7 +36,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@bhashaIME/languages": "file:languages"
+    "@bhashaime/languages": "file:languages"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",

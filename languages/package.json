@@ -1,5 +1,5 @@
 {
-  "name": "@bhashaIME/languages",
+  "name": "@bhashaime/languages",
   "version": "1.0.0",
   "description": "Language types and configurations for BhaSha transliteration system",
   "main": "dist/index.js",
