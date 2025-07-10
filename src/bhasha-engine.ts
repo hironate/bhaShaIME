@@ -597,7 +597,7 @@ export class BhaSha {
                   if (
                     nextIsConsonant &&
                     checkPos < text.length &&
-                    !/[\s.,!?;:\-]/.test(text[checkPos])
+                    !/[\s.,!?;-]/.test(text[checkPos])
                   ) {
                     result += config.virama;
                     // Add ZWJ/ZWNJ after virama
