@@ -60,7 +60,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hironate/bhaShaIME.git"
+    "url": "git+https://github.com/hironate/bhaShaIME.git"
   },
   "bugs": {
     "url": "https://github.com/hironate/bhaShaIME/issues"
