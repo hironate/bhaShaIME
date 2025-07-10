@@ -24,17 +24,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
 
-      - name: Install languages package
+      - name: Install languages package dependencies
         run: cd languages && npm ci
 
       - name: Build languages package
         run: cd languages && npm run build
 
-      - name: Install core package dependencies
-        run: npm ci
+      - name: Build core package
+        run: npm run build
 
       - name: Run tests
         run: npm test
