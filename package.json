@@ -65,8 +65,5 @@
   "bugs": {
     "url": "https://github.com/hironate/bhaShaIME/issues"
   },
-  "homepage": "https://github.com/hironate/bhaShaIME#readme",
-  "workspaces": [
-    "languages"
-  ]
+  "homepage": "https://github.com/hironate/bhaShaIME#readme"
 }
