@@ -18,33 +18,19 @@ jobs:
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Install languages package dependencies
-        run: cd languages && npm ci
-
-      - name: Build languages package
-        run: cd languages && npm run build
-
-      - name: Run languages package tests
-        run: cd languages && npm test
-
-      - name: Publish languages package
-        run: cd languages && npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Install core package dependencies
-        run: npm ci
-
-      - name: Build core package
+      - name: Build package
         run: npm run build
 
-      - name: Run core package tests
+      - name: Run tests
         run: npm test
 
-      - name: Publish core package
+      - name: Publish package
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

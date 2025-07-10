@@ -20,25 +20,15 @@ jobs:
           node-version: 20.x
           cache: 'npm'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Install languages package dependencies
-        run: cd languages && npm ci
-
-      - name: Type check languages package
-        run: cd languages && npx tsc --noEmit
-
-      - name: Lint languages package
-        run: cd languages && npm run lint
-        continue-on-error: true
-
-      - name: Install core package dependencies
-        run: npm ci
-
-      - name: Type check core package
+      - name: Type check
         run: npx tsc --noEmit
 
-      - name: Lint core package
+      - name: Lint
         run: npm run lint
         continue-on-error: true
