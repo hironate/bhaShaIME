@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import { BhaSha } from './bhasha-engine';
+import { SupportedLanguage } from '@bhashaIME/languages';
 
 export interface UseBhaShaIMEOptions {
-  language?: 'gujarati' | 'hindi' | 'english';
+  language?: SupportedLanguage;
   autoTransliterate?: boolean;
   onTransliterationChange?: (input: string, output: string) => void;
 }
@@ -10,9 +11,9 @@ export interface UseBhaShaIMEOptions {
 export interface UseBhaShaIMEReturn {
   input: string;
   output: string;
-  language: string;
+  language: SupportedLanguage;
   setInput: (text: string) => void;
-  setLanguage: (lang: 'gujarati' | 'hindi' | 'english') => void;
+  setLanguage: (lang: SupportedLanguage) => void;
   transliterate: (text: string) => string;
   clear: () => void;
   bhaSha: BhaSha;
@@ -54,7 +55,7 @@ export function useBhaShaIME(
   }, []);
 
   const setLanguage = useCallback(
-    (lang: 'gujarati' | 'hindi' | 'english') => {
+    (lang: SupportedLanguage) => {
       setCurrentLanguage(lang);
       bhaSha.setLanguage(lang);
     },

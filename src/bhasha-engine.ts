@@ -1,7 +1,13 @@
+import { SupportedLanguage, isSupportedLanguage } from '@bhashaIME/languages';
+
 // Comprehensive Indian Language Transliteration System
 export class BhaSha {
-  private currentLanguage: string = 'english';
-  private supportedLanguages: string[] = ['english', 'hindi', 'gujarati'];
+  private currentLanguage: SupportedLanguage = 'english';
+  private supportedLanguages: SupportedLanguage[] = [
+    'english',
+    'hindi',
+    'gujarati',
+  ];
 
   // Language configurations
   private languageConfigs: {
@@ -287,18 +293,21 @@ export class BhaSha {
   }
 
   supports(lang: string): boolean {
-    return this.supportedLanguages.includes(lang.toLowerCase());
+    return (
+      isSupportedLanguage(lang) &&
+      this.supportedLanguages.includes(lang as SupportedLanguage)
+    );
   }
 
-  setLanguage(lang: string): void {
+  setLanguage(lang: SupportedLanguage): void {
     if (this.supports(lang)) {
-      this.currentLanguage = lang.toLowerCase();
+      this.currentLanguage = lang;
     } else {
       throw new Error(`Language '${lang}' is not supported.`);
     }
   }
 
-  getLanguage(): string {
+  getLanguage(): SupportedLanguage {
     return this.currentLanguage;
   }
 

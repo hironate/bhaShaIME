@@ -1,6 +1,11 @@
-# BhaShaIME - React Indian Language Transliteration Plugin
+# @bhashaIME/core - React Indian Language Transliteration Plugin
 
 A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more. Built from scratch in TypeScript with comprehensive test coverage.
+
+## Packages
+
+- **@bhashaIME/core** - Main React components and hooks for transliteration
+- **@bhashaIME/languages** - Language types and configurations
 
 ## Features
 
@@ -14,10 +19,20 @@ A powerful React plugin for real-time Indian language transliteration with suppo
 
 ## Installation
 
+### Core Package
+
 ```bash
-npm install bhashaime
+npm install @bhashaIME/core
 # or
-yarn add bhashaime
+yarn add @bhashaIME/core
+```
+
+### Language Types (Optional)
+
+```bash
+npm install @bhashaIME/languages
+# or
+yarn add @bhashaIME/languages
 ```
 
 ## Quick Start
@@ -25,7 +40,8 @@ yarn add bhashaime
 ### Using the Hook
 
 ```tsx
-import { useBhaShaIME } from 'bhashaime';
+import { useBhaShaIME } from '@bhashaIME/core';
+import { SupportedLanguage } from '@bhashaIME/languages';
 
 function MyComponent() {
   const { input, output, setInput, setLanguage } = useBhaShaIME({
@@ -49,7 +65,7 @@ function MyComponent() {
 ### Using the Input Component
 
 ```tsx
-import { BhaShaInput } from 'bhashaime';
+import { BhaShaInput } from '@bhashaIME/core';
 
 function MyComponent() {
   return (
@@ -67,7 +83,7 @@ function MyComponent() {
 ### Using the Textarea Component
 
 ```tsx
-import { BhaShaTextarea } from 'bhashaime';
+import { BhaShaTextarea } from '@bhashaIME/core';
 
 function MyComponent() {
   return (
@@ -83,13 +99,42 @@ function MyComponent() {
 
 ## API Reference
 
+### @bhashaIME/languages
+
+The languages package provides type definitions and utilities for supported languages:
+
+```typescript
+import {
+  SupportedLanguage,
+  LanguageConfig,
+  LANGUAGES,
+  getLanguageConfig,
+  getSupportedLanguages,
+  isSupportedLanguage,
+} from '@bhashaIME/languages';
+
+// Type for supported languages
+type SupportedLanguage = 'gujarati' | 'hindi' | 'english';
+
+// Get language configuration
+const gujaratiConfig = getLanguageConfig('gujarati');
+// Returns: { name: 'Gujarati', nativeName: 'ગુજરાતી', code: 'gujarati', script: 'Gujarati', direction: 'ltr' }
+
+// Get all supported languages
+const languages = getSupportedLanguages();
+// Returns: ['gujarati', 'hindi', 'english']
+
+// Check if a language is supported
+const isSupported = isSupportedLanguage('gujarati'); // true
+```
+
 ### useBhaShaIME Hook
 
 #### Options
 
 ```typescript
 interface UseBhaShaIMEOptions {
-  language?: 'gujarati' | 'hindi' | 'english';
+  language?: SupportedLanguage;
   autoTransliterate?: boolean;
   onTransliterationChange?: (input: string, output: string) => void;
 }
@@ -101,9 +146,9 @@ interface UseBhaShaIMEOptions {
 interface UseBhaShaIMEReturn {
   input: string;
   output: string;
-  language: string;
+  language: SupportedLanguage;
   setInput: (text: string) => void;
-  setLanguage: (lang: 'gujarati' | 'hindi' | 'english') => void;
+  setLanguage: (lang: SupportedLanguage) => void;
   transliterate: (text: string) => string;
   clear: () => void;
   bhaSha: BhaSha;
