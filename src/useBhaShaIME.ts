@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { BhaSha } from './bhasha-engine';
-import { SupportedLanguage } from '@bhashaime/languages';
+import { SupportedLanguage } from './types';
 
 export interface UseBhaShaIMEOptions {
   language?: SupportedLanguage;

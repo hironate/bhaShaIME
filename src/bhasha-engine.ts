@@ -1,4 +1,4 @@
-import { SupportedLanguage, isSupportedLanguage } from '@bhashaime/languages';
+import { SupportedLanguage, isSupportedLanguage } from './types';
 
 // Comprehensive Indian Language Transliteration System
 export class BhaSha {

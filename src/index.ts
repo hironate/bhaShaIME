@@ -12,6 +12,15 @@ export type { BhaShaInputProps, BhaShaInputRef } from './BhaShaInput';
 export { BhaShaTextarea } from './BhaShaTextarea';
 export type { BhaShaTextareaProps, BhaShaTextareaRef } from './BhaShaTextarea';
 
+// Language types and utilities
+export {
+  LANGUAGES,
+  getLanguageConfig,
+  getSupportedLanguages,
+  isSupportedLanguage,
+} from './types';
+export type { SupportedLanguage, LanguageConfig } from './types';
+
 // Default export for convenience
 import { BhaSha } from './bhasha-engine';
 import { useBhaShaIME } from './useBhaShaIME';
