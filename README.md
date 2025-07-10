@@ -81,29 +81,6 @@ function MyComponent() {
 }
 ```
 
-### Using the Direct Input Component
-
-```tsx
-import { BhaShaDirectInput } from 'bhashaime';
-
-function MyComponent() {
-  return (
-    <BhaShaDirectInput language="gujarati" placeholder="Type in English..." />
-  );
-}
-```
-
-**Multi-line Direct Input:**
-
-```tsx
-<BhaShaDirectInput
-  language="hindi"
-  multiline={true}
-  rows={4}
-  placeholder="Type a paragraph in English..."
-/>
-```
-
 ## API Reference
 
 ### useBhaShaIME Hook
@@ -174,35 +151,6 @@ interface BhaShaTextareaProps extends UseBhaShaIMEOptions {
   onKeyUp?: (event: React.KeyboardEvent<HTMLTextAreaElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLTextAreaElement>) => void;
-}
-```
-
-### BhaShaDirectInput Component
-
-```typescript
-interface BhaShaDirectInputProps extends UseBhaShaIMEOptions {
-  placeholder?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  disabled?: boolean;
-  readOnly?: boolean;
-  rows?: number;
-  cols?: number;
-  multiline?: boolean;
-  onInputChange?: (value: string) => void;
-  onTransliterationChange?: (input: string, output: string) => void;
-  onKeyDown?: (
-    event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  onKeyUp?: (
-    event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  onFocus?: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  onBlur?: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
 }
 ```
 
