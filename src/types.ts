@@ -10,6 +10,31 @@ export interface LanguageConfig {
   direction: 'ltr' | 'rtl';
 }
 
+// Base interface for language-specific transliteration engines
+export interface LanguageEngine {
+  readonly language: SupportedLanguage;
+  transliterateText(text: string): string;
+  processInput(char: string): { valid: boolean; output: string };
+  supports(lang: string): boolean;
+}
+
+// Language-specific configuration interface
+export interface LanguageSpecificConfig {
+  vowels: { [key: string]: { standalone: string; matra: string } };
+  consonants: { [key: string]: string };
+  numbers: { [key: string]: string };
+  specialChars: { [key: string]: string };
+  virama: string;
+  anusvara: string;
+  chandrabindu: string;
+  visarga: string;
+  nukta: string;
+  avagrah: string;
+  zwj: string;
+  zwnj: string;
+  inherentVowel: string;
+}
+
 // Language configurations
 export const LANGUAGES: Record<SupportedLanguage, LanguageConfig> = {
   gujarati: {

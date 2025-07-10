@@ -1,6 +1,14 @@
 // Core BhaSha engine
 export { BhaSha } from './bhasha-engine';
 
+// Engine architecture
+export { EngineFactory } from './engines';
+export type { LanguageEngine } from './engines';
+export { BaseLanguageEngine } from './engines';
+export { GujaratiEngine } from './engines';
+export { HindiEngine } from './engines';
+export { EnglishEngine } from './engines';
+
 // React Hook
 export { useBhaShaIME } from './useBhaShaIME';
 export type { UseBhaShaIMEOptions, UseBhaShaIMEReturn } from './useBhaShaIME';
@@ -19,7 +27,11 @@ export {
   getSupportedLanguages,
   isSupportedLanguage,
 } from './types';
-export type { SupportedLanguage, LanguageConfig } from './types';
+export type {
+  SupportedLanguage,
+  LanguageConfig,
+  LanguageSpecificConfig,
+} from './types';
 
 // Default export for convenience
 import { BhaSha } from './bhasha-engine';

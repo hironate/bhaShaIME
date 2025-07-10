@@ -1,4 +1,5 @@
 import { BhaSha } from '../src/bhasha-engine';
+import { SupportedLanguage } from '../src/types';
 
 // Test file for BhaSha transliteration engine
 // This file contains comprehensive tests for Gujarati and Hindi transliteration
@@ -423,7 +424,7 @@ describe('BhaSha Transliteration Engine', () => {
 
     test('should throw error for unsupported language', () => {
       expect(() => {
-        bhaSha.setLanguage('french' as any);
+        bhaSha.setLanguage('french' as SupportedLanguage);
       }).toThrow("Language 'french' is not supported.");
     });
   });
