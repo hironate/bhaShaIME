@@ -1,5 +1,4 @@
-import { BhaSha } from '../src/bhasha-engine';
-import { SupportedLanguage } from '../src/types';
+import { BhaSha, SupportedLanguage } from '../src';
 
 // Test file for BhaSha transliteration engine
 // This file contains comprehensive tests for Gujarati and Hindi transliteration

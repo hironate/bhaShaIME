@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useCallback } from 'react';
-import { BhaSha } from './bhasha-engine';
-import { SupportedLanguage } from './types';
+import { BhaSha } from '../native/bhasha-engine';
+import { SupportedLanguage } from '../types';
 
 const rawInputKey = 'data-raw-input';
 

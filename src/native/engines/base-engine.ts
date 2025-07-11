@@ -2,7 +2,7 @@ import {
   LanguageEngine,
   LanguageSpecificConfig,
   SupportedLanguage,
-} from '../types';
+} from '../../types';
 
 // Base abstract class for language-specific transliteration engines
 export abstract class BaseLanguageEngine implements LanguageEngine {

@@ -1,5 +1,5 @@
 import { BhaSha } from './bhasha-engine';
-import type { SupportedLanguage } from './types';
+import type { SupportedLanguage } from '../types';
 
 // Use a WeakMap to store raw input state for each element without polluting the DOM
 const elementRawInputMap = new WeakMap<

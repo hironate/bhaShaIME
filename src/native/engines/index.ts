@@ -6,4 +6,4 @@ export { EnglishEngine } from './english-engine';
 export { EngineFactory } from './engine-factory';
 
 // Re-export types for convenience
-export type { LanguageEngine } from '../types';
+export type { LanguageEngine } from '../../types';

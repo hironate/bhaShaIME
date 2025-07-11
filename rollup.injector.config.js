@@ -3,7 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 
 export default {
-  input: 'src/bhasha-ime-injector.ts',
+  input: 'src/native/bhasha-ime-injector.ts',
   output: {
     file: 'dist/bhasha-ime-injector.js',
     format: 'iife',
