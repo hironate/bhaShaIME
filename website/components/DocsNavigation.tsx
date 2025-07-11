@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 
@@ -12,50 +13,55 @@ interface NavItem {
 
 const navigationItems: NavItem[] = [
   {
+    title: 'Introduction',
+    href: '/docs',
+  },
+  {
     title: 'Getting Started',
-    href: '#getting-started',
+    href: '/docs#getting-started',
     children: [
-      { title: 'Installation', href: '#installation' },
-      { title: 'Quick Start', href: '#quick-start' },
+      { title: 'Installation', href: '/docs#installation' },
+      { title: 'Quick Start', href: '/docs#quick-start' },
     ],
   },
   {
-    title: 'Usage Patterns',
-    href: '#usage-patterns',
+    title: 'Hooks',
+    href: '#',
     children: [
-      { title: 'React Hook', href: '#hook-documentation' },
-      { title: 'Input Component', href: '#component-documentation' },
-      { title: 'Textarea Component', href: '#component-documentation' },
-      { title: 'Direct Class Usage', href: '#class-documentation' },
-    ],
-  },
-
-  {
-    title: 'Examples',
-    href: '#examples',
-    children: [
-      { title: 'Basic Usage', href: '#examples' },
-      { title: 'Advanced Patterns', href: '#examples' },
-      { title: 'Custom Styling', href: '#examples' },
+      { title: 'useBhaShaIME', href: '/docs/use-bhasha-ime' },
+      {
+        title: 'useDirectInputTransliteration',
+        href: '/docs/use-direct-input-transliteration',
+      },
     ],
   },
   {
-    title: 'API Reference',
-    href: '#api-reference',
+    title: 'Components',
+    href: '#',
     children: [
-      { title: 'Hook API', href: '#api-reference' },
-      { title: 'Component Props', href: '#api-reference' },
-      { title: 'Class Methods', href: '#api-reference' },
+      { title: 'BhaShaInput', href: '/docs/bhashainput' },
+      { title: 'BhaShaTextarea', href: '/docs/bhashatextarea' },
+    ],
+  },
+  {
+    title: 'Native',
+    href: '#',
+    children: [
+      { title: 'BhaSha Class', href: '/docs/bhasha-engine' },
+      { title: 'Injector Script', href: '/docs/injector' },
     ],
   },
 ];
 
 export default function DocsNavigation() {
+  const pathname = usePathname();
   const [expandedSections, setExpandedSections] = useState<{
     [key: string]: boolean;
   }>({
     'Getting Started': true,
-    'Usage Patterns': true,
+    Hooks: true,
+    Components: true,
+    Native: true,
   });
 
   const toggleSection = (title: string) => {
@@ -92,7 +98,11 @@ export default function DocsNavigation() {
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block py-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      className={`block py-1 text-sm transition-colors ${
+                        pathname === child.href
+                          ? 'text-blue-600 font-semibold'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
                     >
                       {child.title}
                     </Link>
@@ -103,7 +113,11 @@ export default function DocsNavigation() {
           ) : (
             <Link
               href={item.href}
-              className="block py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+              className={`block py-2 text-sm font-medium transition-colors ${
+                pathname === item.href
+                  ? 'text-blue-600 font-semibold'
+                  : 'text-gray-700 hover:text-gray-900'
+              }`}
             >
               {item.title}
             </Link>

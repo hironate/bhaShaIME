@@ -16,11 +16,14 @@ export default [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: true,
+        exports: 'named',
       },
       {
         file: packageJson.module,
         format: 'esm',
         sourcemap: true,
+        banner: "'use client';",
+        exports: 'named',
       },
     ],
     plugins: [
