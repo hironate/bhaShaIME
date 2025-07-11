@@ -106,6 +106,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta
+          name="google-site-verification"
+          content="m-x-QdOdaJRPgnHhSThB5EI3Ik36CrZK7X_zc_A_vIc"
+        />
         <meta name="theme-color" content="#3b82f6" />
         <meta name="msapplication-TileColor" content="#3b82f6" />
         <meta name="msapplication-config" content="/images/browserconfig.xml" />
