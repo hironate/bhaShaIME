@@ -111,6 +111,12 @@ export default function RootLayout({
           name="google-site-verification"
           content="m-x-QdOdaJRPgnHhSThB5EI3Ik36CrZK7X_zc_A_vIc"
         />
+
+        <link rel="icon" href="/images/favicon.ico" sizes="32x32" />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+        <link rel="manifest" href="/images/site.webmanifest" />
+
         <meta name="theme-color" content="#3b82f6" />
         <meta name="msapplication-TileColor" content="#3b82f6" />
         <meta name="msapplication-config" content="/images/browserconfig.xml" />
