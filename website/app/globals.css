@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 23, 23, 23;
+  --background-start-rgb: 250, 250, 250;
+  --background-end-rgb: 255, 255, 255;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Code syntax highlighting */
+.hljs {
+  background: #fafafa !important;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+}
+
+/* Demo container styles */
+.demo-container {
+  @apply bg-white border border-gray-200 rounded-lg p-6;
+}
+
+.demo-output {
+  @apply bg-gray-50 border border-gray-200 rounded-md p-3 mt-3 font-mono text-sm;
+}

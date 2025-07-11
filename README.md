@@ -1,4 +1,4 @@
-# @bhashaIME/core - React Indian Language Transliteration Plugin
+# A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more
 
 A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more. Built from scratch in TypeScript with comprehensive test coverage.
 
@@ -8,7 +8,7 @@ A powerful React plugin for real-time Indian language transliteration with suppo
 - 🇮🇳 **Multi-language support**: Gujarati, Hindi, and more
 - ⚡ **React Hooks & Components** for easy integration
 - 🎯 **TypeScript support** with full type definitions
-- 🧪 **Comprehensive test coverage** (58+ tests)
+- 🧪 **Comprehensive test coverage**
 - 📱 **Responsive design** with customizable styling
 - 🔧 **Flexible configuration** options
 
@@ -183,51 +183,63 @@ interface BhaShaTextareaProps extends UseBhaShaIMEOptions {
 }
 ```
 
-## Transliteration Rules
+### BhaSha Class
 
-### Gujarati
+For direct usage without React components or hooks, you can use the BhaSha class directly:
 
-#### Basic Vowels
+```typescript
+import { BhaSha } from '@bhashaIME/core';
 
-- `a aa i ee u oo e o` → અ આ ઇ ઈ ઉ ઊ એ ઓ
-- `ai au E O` → ઐ ઔ ઍ ઑ
+// Create a new instance
+const bhaSha = new BhaSha();
 
-#### Consonants
+// Set language
+bhaSha.setLanguage('gujarati');
 
-- `k kh g gh` → ક ખ ગ ઘ
-- `ch chh j jh` → ચ છ જ ઝ
-- `T Th D Dh N` → ટ ઠ ડ ઢ ણ
+// Transliterate text
+const gujaratiText = bhaSha.transliterateText('namaste');
+console.log(gujaratiText); // નમસ્તે
 
-#### Special Characters
+// Switch language
+bhaSha.setLanguage('hindi');
+const hindiText = bhaSha.transliterateText('namaste');
+console.log(hindiText); // नमस्ते
 
-- `x` → ક્ષ, `Gn/Gy` → જ્ઞ
-- `M/.n/.m` → ં (anusvara)
-- `H/:` → ઃ (visarga)
+// Check supported languages
+console.log(bhaSha.supports('gujarati')); // true
+console.log(bhaSha.getSupportedLanguages()); // ['gujarati', 'hindi', 'english']
 
-#### Advanced Features
+// Get current language
+console.log(bhaSha.getLanguage()); // 'hindi'
 
-- **ZWJ/ZWNJ**: `--` → ZWJ, `---` → ZWNJ
-- **Vowel Separation**: `thai` → થૈ, `tha-i` → થઇ
-- **Dead Consonants**: `daMDavat-` → દંડવત્
+// Get specific engine
+const gujaratiEngine = bhaSha.getEngine('gujarati');
+console.log(gujaratiEngine.transliterateText('hello')); // હેલ્લો
+```
 
-### Hindi
+#### BhaSha Class Methods
 
-#### Basic Vowels
+```typescript
+class BhaSha {
+  // Set the active language
+  setLanguage(language: SupportedLanguage): void;
 
-- `a aa i ee u oo e o` → अ आ इ ई उ ऊ ए ओ
-- `ai au` → ऐ औ
+  // Get the current language
+  getLanguage(): SupportedLanguage;
 
-#### Consonants
+  // Transliterate text using current language
+  transliterateText(text: string): string;
 
-- `k kh g gh` → क ख ग घ
-- `ch chh j jh` → च छ ज झ
-- `T Th D Dh N` → ट ठ ड ढ ण
+  // Check if a language is supported
+  supports(language: string): boolean;
 
-#### Special Characters
+  // Get all supported languages
+  getSupportedLanguages(): SupportedLanguage[];
 
-- `x` → क्ष, `Gy` → ज्ञ
-- `M` → ं (anusvara)
-- `H` → ः (visarga)
+  // Get engine for specific language
+  getEngine(language: SupportedLanguage): TransliterationEngine;
+}
+```
 
 ## Examples
 
