@@ -1,6 +1,6 @@
 {
   "name": "@bhashaime/core",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "type": "module",
   "description": "A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more",
   "main": "dist/index.js",
