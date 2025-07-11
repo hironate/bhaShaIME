@@ -35,24 +35,24 @@ export const metadata: Metadata = {
   publisher: 'BhaSha IME',
   icons: {
     icon: [
-      { url: '/favicon/favicon.ico', sizes: '32x32' },
-      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/images/favicon.ico', sizes: '32x32' },
+      { url: '/images/favicon.svg', type: 'image/svg+xml' },
+      { url: '/images/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
       {
-        url: '/favicon/web-app-manifest-192x192.png',
+        url: '/images/web-app-manifest-192x192.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        url: '/favicon/web-app-manifest-512x512.png',
+        url: '/images/web-app-manifest-512x512.png',
         sizes: '512x512',
         type: 'image/png',
       },
     ],
-    shortcut: '/favicon/favicon.ico',
+    shortcut: '/images/favicon.ico',
     apple: [
       {
-        url: '/favicon/apple-touch-icon.png',
+        url: '/images/apple-touch-icon.png',
         sizes: '180x180',
         type: 'image/png',
       },
@@ -60,21 +60,21 @@ export const metadata: Metadata = {
     other: [
       {
         rel: 'apple-touch-icon-precomposed',
-        url: '/favicon/apple-touch-icon.png',
+        url: '/images/apple-touch-icon.png',
       },
       {
         rel: 'mask-icon',
-        url: '/favicon/favicon.svg',
+        url: '/images/favicon.svg',
         color: '#3b82f6',
       },
       {
         rel: 'icon',
         type: 'image/svg+xml',
-        url: '/favicon/favicon.svg',
+        url: '/images/favicon.svg',
       },
     ],
   },
-  manifest: '/favicon/site.webmanifest',
+  manifest: '/images/site.webmanifest',
   openGraph: {
     title:
       'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
@@ -108,10 +108,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#3b82f6" />
         <meta name="msapplication-TileColor" content="#3b82f6" />
-        <meta
-          name="msapplication-config"
-          content="/favicon/browserconfig.xml"
-        />
+        <meta name="msapplication-config" content="/images/browserconfig.xml" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="BhaSha IME" />
