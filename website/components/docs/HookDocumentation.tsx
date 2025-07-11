@@ -7,29 +7,34 @@ import { useBhaShaIME } from '@bhashaime/core';
 
 export default function HookDocumentation() {
   const [demoOutput, setDemoOutput] = useState('');
-  const { input, output, setInput, setLanguage, language, clear } = useBhaShaIME({
-    language: 'gujarati',
-    autoTransliterate: true,
-    onTransliterationChange: (input, output) => {
-      setDemoOutput(`Input: "${input}" → Output: "${output}"`);
-    },
-  });
+  const { input, output, setInput, setLanguage, language, clear } =
+    useBhaShaIME({
+      language: 'gujarati',
+      autoTransliterate: true,
+      onTransliterationChange: (input, output) => {
+        setDemoOutput(`Input: "${input}" → Output: "${output}"`);
+      },
+    });
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">useBhaShaIME Hook</h2>
-      
+      <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        useBhaShaIME Hook
+      </h2>
+
       <div className="prose max-w-none">
         <p className="text-lg text-gray-600 mb-8">
-          The `useBhaShaIME` hook provides the most flexible way to integrate transliteration 
-          into your React components. It gives you complete control over the UI while handling 
-          all the transliteration logic.
+          The `useBhaShaIME` hook provides the most flexible way to integrate
+          transliteration into your React components. It gives you complete
+          control over the UI while handling all the transliteration logic.
         </p>
 
         {/* Basic Usage */}
         <div className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Basic Usage</h3>
-          
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            Basic Usage
+          </h3>
+
           <SyntaxHighlighter
             language="typescript"
             style={oneLight}
@@ -58,7 +63,9 @@ function MyComponent() {
 
           {/* Live Demo */}
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <h4 className="text-sm font-semibold text-gray-700 mb-3">Live Demo:</h4>
+            <h4 className="text-sm font-semibold text-gray-700 mb-3">
+              Live Demo:
+            </h4>
             <div className="space-y-3">
               <input
                 value={input}
@@ -68,22 +75,32 @@ function MyComponent() {
               />
               <div className="p-3 bg-white border border-gray-200 rounded-md">
                 <span className="text-sm text-gray-600">Output: </span>
-                <span className="font-mono">{output || 'Type something to see transliteration...'}</span>
+                <span className="font-mono">
+                  {output || 'Type something to see transliteration...'}
+                </span>
               </div>
               <div className="flex space-x-2">
-                <button 
+                <button
                   onClick={() => setLanguage('gujarati')}
-                  className={`px-3 py-1 rounded text-sm ${language === 'gujarati' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  className={`px-3 py-1 rounded text-sm ${
+                    language === 'gujarati'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700'
+                  }`}
                 >
                   Gujarati
                 </button>
-                <button 
+                <button
                   onClick={() => setLanguage('hindi')}
-                  className={`px-3 py-1 rounded text-sm ${language === 'hindi' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+                  className={`px-3 py-1 rounded text-sm ${
+                    language === 'hindi'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-200 text-gray-700'
+                  }`}
                 >
                   Hindi
                 </button>
-                <button 
+                <button
                   onClick={clear}
                   className="px-3 py-1 bg-red-100 text-red-700 rounded text-sm hover:bg-red-200"
                 >
@@ -101,14 +118,15 @@ function MyComponent() {
 
         {/* Hook Options */}
         <div className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Hook Options</h3>
-          
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            Hook Options
+          </h3>
+
           <div className="bg-gray-50 rounded-lg p-6 mb-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">UseBhaShaIMEOptions</h4>
-            <SyntaxHighlighter
-              language="typescript"
-              style={oneLight}
-            >
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              UseBhaShaIMEOptions
+            </h4>
+            <SyntaxHighlighter language="typescript" style={oneLight}>
               {`interface UseBhaShaIMEOptions {
   language?: SupportedLanguage;        // Default: 'gujarati'
   autoTransliterate?: boolean;         // Default: true
@@ -124,7 +142,8 @@ function MyComponent() {
             <div className="border border-gray-200 rounded-lg p-4">
               <h5 className="font-semibold text-gray-900 mb-2">language</h5>
               <p className="text-sm text-gray-600 mb-2">
-                The initial language for transliteration. Can be changed later using `setLanguage`.
+                The initial language for transliteration. Can be changed later
+                using `setLanguage`.
               </p>
               <div className="text-xs text-gray-500">
                 Type: `SupportedLanguage` • Default: `'gujarati'`
@@ -132,10 +151,12 @@ function MyComponent() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4">
-              <h5 className="font-semibold text-gray-900 mb-2">autoTransliterate</h5>
+              <h5 className="font-semibold text-gray-900 mb-2">
+                autoTransliterate
+              </h5>
               <p className="text-sm text-gray-600 mb-2">
-                Whether to automatically transliterate input as the user types. When false, 
-                use the `transliterate` method manually.
+                Whether to automatically transliterate input as the user types.
+                When false, use the `transliterate` method manually.
               </p>
               <div className="text-xs text-gray-500">
                 Type: `boolean` • Default: `true`
@@ -143,13 +164,16 @@ function MyComponent() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4">
-              <h5 className="font-semibold text-gray-900 mb-2">onTransliterationChange</h5>
+              <h5 className="font-semibold text-gray-900 mb-2">
+                onTransliterationChange
+              </h5>
               <p className="text-sm text-gray-600 mb-2">
-                Callback function called whenever the input or output changes. Useful for 
-                side effects like logging or analytics.
+                Callback function called whenever the input or output changes.
+                Useful for side effects like logging or analytics.
               </p>
               <div className="text-xs text-gray-500">
-                Type: `(input: string, output: string) => void` • Default: `undefined`
+                Type: `(input: string, output: string) =&gt; void` • Default:
+                `undefined`
               </div>
             </div>
           </div>
@@ -157,14 +181,15 @@ function MyComponent() {
 
         {/* Return Values */}
         <div className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Return Values</h3>
-          
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            Return Values
+          </h3>
+
           <div className="bg-gray-50 rounded-lg p-6 mb-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">UseBhaShaIMEReturn</h4>
-            <SyntaxHighlighter
-              language="typescript"
-              style={oneLight}
-            >
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              UseBhaShaIMEReturn
+            </h4>
+            <SyntaxHighlighter language="typescript" style={oneLight}>
               {`interface UseBhaShaIMEReturn {
   input: string;                           // Current input text
   output: string;                          // Transliterated output
@@ -181,15 +206,16 @@ function MyComponent() {
 
         {/* Advanced Examples */}
         <div className="mb-12">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Advanced Examples</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            Advanced Examples
+          </h3>
 
           {/* Manual Transliteration */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">Manual Transliteration</h4>
-            <SyntaxHighlighter
-              language="typescript"
-              style={oneLight}
-            >
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              Manual Transliteration
+            </h4>
+            <SyntaxHighlighter language="typescript" style={oneLight}>
               {`function ManualTransliterationComponent() {
   const { input, setInput, transliterate, language } = useBhaShaIME({
     autoTransliterate: false, // Disable auto-transliteration
@@ -221,11 +247,10 @@ function MyComponent() {
 
           {/* Multi-language Support */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">Multi-language Support</h4>
-            <SyntaxHighlighter
-              language="typescript"
-              style={oneLight}
-            >
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              Multi-language Support
+            </h4>
+            <SyntaxHighlighter language="typescript" style={oneLight}>
               {`function MultiLanguageComponent() {
   const { 
     input, 
@@ -275,11 +300,10 @@ function MyComponent() {
 
           {/* With Validation */}
           <div className="mb-8">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">With Input Validation</h4>
-            <SyntaxHighlighter
-              language="typescript"
-              style={oneLight}
-            >
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              With Input Validation
+            </h4>
+            <SyntaxHighlighter language="typescript" style={oneLight}>
               {`function ValidatedInputComponent() {
   const { input, output, setInput } = useBhaShaIME({
     language: 'hindi',
@@ -340,17 +364,32 @@ function MyComponent() {
 
         {/* Best Practices */}
         <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-green-900 mb-4">Best Practices</h3>
+          <h3 className="text-lg font-semibold text-green-900 mb-4">
+            Best Practices
+          </h3>
           <ul className="space-y-2 text-green-800 text-sm">
-            <li>• Use `autoTransliterate: true` for real-time typing experiences</li>
-            <li>• Use `autoTransliterate: false` for form submissions or controlled updates</li>
-            <li>• Store the BhaSha instance (`bhaSha`) for advanced engine operations</li>
-            <li>• Use `onTransliterationChange` for analytics or side effects</li>
+            <li>
+              • Use `autoTransliterate: true` for real-time typing experiences
+            </li>
+            <li>
+              • Use `autoTransliterate: false` for form submissions or
+              controlled updates
+            </li>
+            <li>
+              • Store the BhaSha instance (`bhaSha`) for advanced engine
+              operations
+            </li>
+            <li>
+              • Use `onTransliterationChange` for analytics or side effects
+            </li>
             <li>• Implement input validation for better user experience</li>
-            <li>• Use `clear()` method to reset both input and output simultaneously</li>
+            <li>
+              • Use `clear()` method to reset both input and output
+              simultaneously
+            </li>
           </ul>
         </div>
       </div>
     </div>
   );
-} 
+}
