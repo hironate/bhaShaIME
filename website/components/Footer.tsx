@@ -10,9 +10,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-xs">भ</span>
-              </div>
+              <img
+                src="/logo.png"
+                alt="BhaSha IME Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span className="font-semibold text-gray-900">BhaSha IME</span>
             </div>
             <p className="text-sm text-gray-600 max-w-sm">
