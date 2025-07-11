@@ -222,6 +222,55 @@ const gujaratiEngine = bhaSha.getEngine('gujarati');
 console.log(gujaratiEngine.transliterateText('hello')); // હેલ્લો
 ```
 
+### `useDirectInputTransliteration` Hook
+
+For seamless, in-place transliteration directly within an `<input>` or `<textarea>` element, the `useDirectInputTransliteration` hook is the ideal choice. It binds directly to the element using a ref, providing a smoother user experience without needing to manage separate `input` and `output` states.
+
+```tsx
+import { useRef } from 'react';
+import {
+  useDirectInputTransliteration,
+  SupportedLanguage,
+} from '@bhashaime/core';
+
+function DirectInputComponent() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useDirectInputTransliteration({
+    ref: inputRef,
+    language: 'hindi',
+    initialRawValue: 'type here',
+  });
+
+  return (
+    <input
+      ref={inputRef}
+      placeholder="Type directly in Hindi..."
+      style={{ width: '100%', padding: '8px' }}
+    />
+  );
+}
+```
+
+### Usage Without React (Drop-in Script)
+
+For non-React projects, you can use a simple drop-in script to enable transliteration across your entire website. Add the following script tag to your HTML file, just before the closing `</body>` tag. The script automatically detects all `<input>` and `<textarea>` fields and applies real-time transliteration.
+
+**Add to your HTML:**
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@bhashaime/core/dist/bhasha-ime-injector.js"></script>
+```
+
+By default, the script starts in the `gujarati` language. You can change it globally like this:
+
+**Change language via JavaScript:**
+
+```javascript
+// Switch to Hindi
+window.bhashaIME.setLanguage('hindi');
+```
+
 #### BhaSha Class Methods
 
 ```typescript

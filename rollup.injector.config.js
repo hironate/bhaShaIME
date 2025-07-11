@@ -5,7 +5,7 @@ import terser from '@rollup/plugin-terser';
 export default {
   input: 'src/bhasha-ime-injector.ts',
   output: {
-    file: 'examples/playground/public/bhasha-ime-injector.js',
+    file: 'dist/bhasha-ime-injector.js',
     format: 'iife',
     name: 'BhashaIMEInjector',
   },

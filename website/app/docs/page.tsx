@@ -1,14 +1,15 @@
 import Link from 'next/link';
-import { ArrowRight, Package, Code2, Book, Zap } from 'lucide-react';
+import {
+  ArrowRight,
+  Package,
+  Code2,
+  Book,
+  Zap,
+  ChevronsRight,
+} from 'lucide-react';
 import DocsNavigation from '@/components/DocsNavigation';
 import InstallationGuide from '@/components/docs/InstallationGuide';
 import QuickStartGuide from '@/components/docs/QuickStartGuide';
-import HookDocumentation from '@/components/docs/HookDocumentation';
-import ComponentDocumentation from '@/components/docs/ComponentDocumentation';
-import ClassDocumentation from '@/components/docs/ClassDocumentation';
-
-import ExamplesSection from '@/components/docs/ExamplesSection';
-import APIReference from '@/components/docs/APIReference';
 
 export const metadata = {
   title: 'Documentation - BhaSha IME',
@@ -38,65 +39,44 @@ export default function DocsPage() {
                 </h1>
                 <p className="text-lg text-gray-600 max-w-3xl">
                   Learn how to integrate BhaSha IME into your React
-                  applications. From simple hooks to advanced customizations.
+                  applications, or use it standalone in any HTML page.
                 </p>
               </div>
 
-              {/* Quick Links */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <Link href="#installation" className="group h-full">
+              {/* Quick Links to Usage Patterns */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <Link href="/docs/use-bhasha-ime" className="group h-full">
                   <div className="p-6 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors h-full flex flex-col min-h-[140px]">
-                    <Package
-                      className="text-blue-600 mb-3 flex-shrink-0"
-                      size={24}
-                    />
-                    <h3 className="font-semibold text-gray-900 mb-2 flex-shrink-0">
-                      Installation
+                    <Zap className="text-green-600 mb-3" size={24} />
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      React Hooks
                     </h3>
                     <p className="text-sm text-gray-600 flex-grow">
-                      Get started with npm install
+                      Flexible integration with `useBhaShaIME` and
+                      `useDirectInputTransliteration`.
                     </p>
                   </div>
                 </Link>
-                <Link href="#quick-start" className="group h-full">
+                <Link href="/docs/bhashainput" className="group h-full">
                   <div className="p-6 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors h-full flex flex-col min-h-[140px]">
-                    <Zap
-                      className="text-green-600 mb-3 flex-shrink-0"
-                      size={24}
-                    />
-                    <h3 className="font-semibold text-gray-900 mb-2 flex-shrink-0">
-                      Quick Start
+                    <Package className="text-blue-600 mb-3" size={24} />
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      React Components
                     </h3>
                     <p className="text-sm text-gray-600 flex-grow">
-                      Basic usage examples
+                      Ready-to-use `BhaShaInput` and `BhaShaTextarea`
+                      components.
                     </p>
                   </div>
                 </Link>
-                <Link href="#api-reference" className="group h-full">
+                <Link href="/docs/injector" className="group h-full">
                   <div className="p-6 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors h-full flex flex-col min-h-[140px]">
-                    <Code2
-                      className="text-purple-600 mb-3 flex-shrink-0"
-                      size={24}
-                    />
-                    <h3 className="font-semibold text-gray-900 mb-2 flex-shrink-0">
-                      API Reference
+                    <Code2 className="text-orange-600 mb-3" size={24} />
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      Injector Script
                     </h3>
                     <p className="text-sm text-gray-600 flex-grow">
-                      Complete API documentation
-                    </p>
-                  </div>
-                </Link>
-                <Link href="#examples" className="group h-full">
-                  <div className="p-6 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors h-full flex flex-col min-h-[140px]">
-                    <Book
-                      className="text-orange-600 mb-3 flex-shrink-0"
-                      size={24}
-                    />
-                    <h3 className="font-semibold text-gray-900 mb-2 flex-shrink-0">
-                      Examples
-                    </h3>
-                    <p className="text-sm text-gray-600 flex-grow">
-                      Real-world use cases
+                      Use in any HTML page without a framework.
                     </p>
                   </div>
                 </Link>
@@ -110,26 +90,6 @@ export default function DocsPage() {
 
                 <section id="quick-start">
                   <QuickStartGuide />
-                </section>
-
-                <section id="hook-documentation">
-                  <HookDocumentation />
-                </section>
-
-                <section id="component-documentation">
-                  <ComponentDocumentation />
-                </section>
-
-                <section id="class-documentation">
-                  <ClassDocumentation />
-                </section>
-
-                <section id="examples">
-                  <ExamplesSection />
-                </section>
-
-                <section id="api-reference">
-                  <APIReference />
                 </section>
               </div>
 
