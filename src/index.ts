@@ -12,6 +12,7 @@ export { EnglishEngine } from './engines';
 // React Hook
 export { useBhaShaIME } from './useBhaShaIME';
 export type { UseBhaShaIMEOptions, UseBhaShaIMEReturn } from './useBhaShaIME';
+export { useDirectInputTransliteration } from './useDirectInputTransliteration';
 
 // React Components
 export { BhaShaInput } from './BhaShaInput';
