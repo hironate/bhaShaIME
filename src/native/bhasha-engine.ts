@@ -1,4 +1,4 @@
-import { SupportedLanguage } from './types';
+import { SupportedLanguage } from '../types';
 import { EngineFactory, LanguageEngine } from './engines';
 
 // Main BhaSha class that delegates to language-specific engines

@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-import { useBhaShaIME, UseBhaShaIMEOptions } from './useBhaShaIME';
+import { useBhaShaIME } from '../hooks/useBhaShaIME';
+import type { UseBhaShaIMEOptions } from '../hooks/useBhaShaIME';
 
 export interface BhaShaTextareaProps extends UseBhaShaIMEOptions {
   placeholder?: string;

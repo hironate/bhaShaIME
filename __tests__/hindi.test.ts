@@ -1,5 +1,4 @@
-import { BhaSha } from '../src/bhasha-engine';
-import { SupportedLanguage } from '../src/types';
+import { BhaSha } from '../src';
 
 describe('Hindi Transliteration Engine', () => {
   let bhaSha: BhaSha;

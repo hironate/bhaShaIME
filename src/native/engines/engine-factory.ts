@@ -1,4 +1,4 @@
-import { LanguageEngine, SupportedLanguage } from '../types';
+import { LanguageEngine, SupportedLanguage } from '../../types';
 import { GujaratiEngine } from './gujarati-engine';
 import { HindiEngine } from './hindi-engine';
 import { EnglishEngine } from './english-engine';

@@ -1,5 +1,5 @@
 import { BaseLanguageEngine } from './base-engine';
-import { LanguageSpecificConfig } from '../types';
+import { LanguageSpecificConfig } from '../../types';
 
 export class EnglishEngine extends BaseLanguageEngine {
   readonly language = 'english' as const;

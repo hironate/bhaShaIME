@@ -1,168 +1,148 @@
 import { BaseLanguageEngine } from './base-engine';
-import { LanguageSpecificConfig } from '../types';
+import { LanguageSpecificConfig } from '../../types';
 
-export class HindiEngine extends BaseLanguageEngine {
-  readonly language = 'hindi' as const;
+export class GujaratiEngine extends BaseLanguageEngine {
+  readonly language = 'gujarati' as const;
 
   protected config: LanguageSpecificConfig = {
     vowels: {
-      a: { standalone: 'अ', matra: '' }, // inherent vowel
-      aa: { standalone: 'आ', matra: 'ा' },
-      A: { standalone: 'आ', matra: 'ा' },
-      i: { standalone: 'इ', matra: 'ि' },
-      ee: { standalone: 'ई', matra: 'ी' },
-      I: { standalone: 'ई', matra: 'ी' },
-      u: { standalone: 'उ', matra: 'ु' },
-      oo: { standalone: 'ऊ', matra: 'ू' },
-      U: { standalone: 'ऊ', matra: 'ू' },
-      Ri: { standalone: 'ऋ', matra: 'ृ' },
-      RI: { standalone: 'ॠ', matra: 'ॄ' },
-      'Li-': { standalone: 'ऌ', matra: 'ॢ' },
-      'LI-': { standalone: 'ॡ', matra: 'ॣ' },
-      E: { standalone: 'ऍ', matra: 'ॅ' }, // Chandra E
-      E_: { standalone: 'ऎ', matra: 'ॆ' }, // Short E
-      e: { standalone: 'ए', matra: 'े' },
-      ai: { standalone: 'ऐ', matra: 'ै' },
-      O: { standalone: 'ऑ', matra: 'ॉ' }, // Chandra O
-      O_: { standalone: 'ऒ', matra: 'ॊ' }, // Short O
-      o: { standalone: 'ओ', matra: 'ो' },
-      au: { standalone: 'औ', matra: 'ौ' },
-      ou: { standalone: 'औ', matra: 'ौ' },
-      a_: { standalone: 'ऄ', matra: '' }, // Short A
+      a: { standalone: 'અ', matra: '' }, // inherent vowel
+      aa: { standalone: 'આ', matra: 'ા' },
+      A: { standalone: 'આ', matra: 'ા' },
+      i: { standalone: 'ઇ', matra: 'િ' },
+      ee: { standalone: 'ઈ', matra: 'ી' },
+      I: { standalone: 'ઈ', matra: 'ી' },
+      u: { standalone: 'ઉ', matra: 'ુ' },
+      oo: { standalone: 'ઊ', matra: 'ૂ' },
+      U: { standalone: 'ઊ', matra: 'ૂ' },
+      Ru: { standalone: 'ઋ', matra: 'ૃ' },
+      Ri: { standalone: 'ઋ', matra: 'ૃ' },
+      RU: { standalone: 'ૠ', matra: 'ૄ' },
+      RI: { standalone: 'ૠ', matra: 'ૄ' },
+      'Lu-': { standalone: 'ઌ', matra: 'ૢ' },
+      'Li-': { standalone: 'ઌ', matra: 'ૢ' },
+      'LU-': { standalone: 'ૡ', matra: 'ૣ' },
+      'LI-': { standalone: 'ૡ', matra: 'ૣ' },
+      // R should only be used as matra, not standalone
+      R: { standalone: '', matra: 'ૃ' }, // For kR → કૃ (matra only)
+      E: { standalone: 'ઍ', matra: 'ૅ' }, // Chandra E
+      e: { standalone: 'એ', matra: 'ે' },
+      ai: { standalone: 'ઐ', matra: 'ૈ' },
+      O: { standalone: 'ઑ', matra: 'ૉ' }, // Chandra O
+      o: { standalone: 'ઓ', matra: 'ો' },
+      au: { standalone: 'ઔ', matra: 'ૌ' },
+      ou: { standalone: 'ઔ', matra: 'ૌ' },
     },
     consonants: {
       // Special combinations MUST come first (longest first)
-      chh: 'छ',
-      Ch: 'छ', // Alternative
-      kh: 'ख',
-      gh: 'घ',
-      jh: 'झ',
-      z: 'झ', // Alternative for jh
-      Th: 'ठ',
-      Dh: 'ढ', // Retroflex D
-      th: 'थ',
-      dh: 'ध', // Dental d
-      ph: 'फ',
-      f: 'फ', // Alternative for ph
-      bh: 'भ',
-      sh: 'श',
-      S: 'श', // Alternative for sh
-      Sh: 'ष',
-      NG: 'ङ',
-      NY: 'ञ',
-      ch: 'च',
-      C: 'च', // Alternative
+      chh: 'છ',
+      Ch: 'છ',
+      kh: 'ખ',
+      gh: 'ઘ',
+      jh: 'ઝ',
+      Th: 'ઠ',
+      Dh: 'ઢ',
+      th: 'થ',
+      dh: 'ધ',
+      ph: 'ફ',
+      bh: 'ભ',
+      sh: 'શ',
+      Sh: 'ષ',
+      NG: 'ઙ',
+      NY: 'ઞ',
+      ch: 'ચ',
       // Single consonants (both cases)
-      k: 'क',
-      g: 'ग',
-      j: 'ज',
-      T: 'ट',
-      D: 'ड',
-      N: 'ण',
-      t: 'त',
-      d: 'द',
-      n: 'न',
-      p: 'प',
-      b: 'ब',
-      m: 'म',
-      y: 'य',
-      r: 'र',
-      R: 'र', // Alternative for r
-      l: 'ल',
-      L: 'ळ', // Retroflex L
-      v: 'व',
-      w: 'व', // Alternative for v
-      s: 'स',
-      h: 'ह',
-      // Nukta consonants
-      'k*': 'क़',
-      q: 'क़', // Alternative
-      K: 'क़', // nukta for Hindi
-      'kh*': 'ख़',
-      Q: 'ख़', // Alternative
-      Kh: 'ख़', // Alternative
-      'g*': 'ग़',
-      G: 'ग़', // Alternative
-      'j*': 'ज़',
-      J: 'ज़', // Alternative
-      'D*': 'ड़',
-      'Dh*': 'ढ़', // Nukta form of retroflex D (U+095C)
-      'n*': 'ऩ',
-      'ph*': 'फ़',
-      'f*': 'फ़', // Alternative
-      F: 'फ़', // Alternative
-      'y*': 'य़',
-      Y: 'य़', // Alternative
-      'r*': 'ऱ',
-      'L*': 'ऴ',
+      K: 'ક', // uppercase K
+      k: 'ક',
+      G: 'ગ', // uppercase G
+      g: 'ગ',
+      C: 'ચ',
+      J: 'જ', // uppercase J
+      j: 'જ',
+      z: 'ઝ', // alternate for jh
+      T: 'ટ',
+      D: 'ડ',
+      N: 'ણ',
+      t: 'ત',
+      d: 'દ',
+      n: 'ન',
+      P: 'પ', // uppercase P
+      p: 'પ',
+      F: 'ફ', // uppercase F
+      f: 'ફ',
+      B: 'બ', // uppercase B
+      b: 'બ',
+      m: 'મ', // lowercase m for consonant (not anusvara)
+      Y: 'ય', // uppercase Y
+      y: 'ય',
+      R: 'ર',
+      r: 'ર',
+      L: 'ળ', // retroflex L
+      l: 'લ',
+      V: 'વ', // uppercase V
+      v: 'વ',
+      W: 'વ', // uppercase W
+      w: 'વ',
+      S: 'શ',
+      s: 'સ',
+      h: 'હ', // h for consonant (H is handled as visarga)
     },
     numbers: {
-      '0': '०',
-      '1': '१',
-      '2': '२',
-      '3': '३',
-      '4': '४',
-      '5': '५',
-      '6': '६',
-      '7': '७',
-      '8': '८',
-      '9': '९',
+      '0': '૦',
+      '1': '૧',
+      '2': '૨',
+      '3': '૩',
+      '4': '૪',
+      '5': '૫',
+      '6': '૬',
+      '7': '૭',
+      '8': '૮',
+      '9': '૯',
     },
     specialChars: {
       // ZWJ/ZWNJ must come before single/double dashes
       '---': '\u200C', // ZWNJ (Zero Width Non-Joiner)
       '--': '\u200D', // ZWJ (Zero Width Joiner)
       // Special combinations
-      kSh: 'क्ष',
-      x: 'क्ष',
-      Gy: 'ज्ञ',
-      // Special case for common English-origin words
-      test: 'टेस्ट',
-      TesTa: 'टेस्ट',
+      kSh: 'ક્ષ',
+      x: 'ક્ષ',
+      Gn: 'જ્ઞ',
+      Gy: 'જ્ઞ',
+      Sr: 'શ્ર', // શ્ર combination
       // Compound vowel + anusvara/visarga patterns
-      aM: 'अं', // a + anusvara
-      'a.n': 'अं', // a + explicit anusvara
-      'a.m': 'अं', // a + explicit anusvara
-      // Chandrabindu patterns
-      'ha.n': 'हँ', // ha + chandrabindu
-      'ha.m': 'हँ', // ha + chandrabindu
-      // Special vowel patterns
-      anr: 'अनर', // special case where r is a vowel
-      amy: 'अमय', // special case where y is a vowel
-      aH: 'अः', // a + visarga
-      'a:': 'अः', // a + visarga
+      aM: 'અં', // a + anusvara
+      'a.n': 'અં', // a + explicit anusvara
+      'a.m': 'અં', // a + explicit anusvara
+      aH: 'અઃ', // a + visarga
+      'a:': 'અઃ', // a + visarga
       // Other special chars (explicit patterns only)
-      'aM-': 'अँ',
-      'M-': 'ँ',
-      M: 'ं', // standalone anusvara
-      '.M': 'ं', // explicit anusvara
-      '.n': 'ं',
-      '.m': 'ं',
-      H: 'ः', // standalone visarga
-      '.H': 'ः', // explicit visarga
-      ':': 'ः',
-      '*': '़', // nukta
+      'aM-': 'ઁ',
+      'M-': 'ઁ',
+      M: 'ં', // standalone anusvara
+      '.M': 'ં', // explicit anusvara
+      '.n': 'ં',
+      '.m': 'ં',
+      H: 'ઃ', // standalone visarga
+      '.H': 'ઃ', // explicit visarga
+      ':': 'ઃ',
+      '*': '઼', // nukta
       '*-': '*',
-      '.a': 'ऽ', // avagrah
+      '.a': 'ઽ', // avagrah
       '||': '॥',
       '|': '।',
+      'Rs-': '૱',
       Rs: '₹',
-      OM: 'ॐ',
+      OM: 'ૐ',
       '+-': '卐',
       '|-': '|',
       ':-': ':',
-      '@': '॰', // Devanagari abbreviation sign
-      '@-': '@',
-      // Special patterns for nasalization
-      hain: 'हैं',
-      'hain.': 'हैं।',
     },
-    virama: '्',
-    anusvara: 'ं',
-    chandrabindu: 'ँ',
-    visarga: 'ः',
-    nukta: '़',
-    avagrah: 'ऽ',
+    virama: '્',
+    anusvara: 'ં',
+    chandrabindu: 'ઁ',
+    visarga: 'ઃ',
+    nukta: '઼',
+    avagrah: 'ઽ',
     zwj: '\u200D',
     zwnj: '\u200C',
     inherentVowel: 'a',
@@ -191,7 +171,6 @@ export class HindiEngine extends BaseLanguageEngine {
       // T, Th, D, Dh (retroflexes)
       // t, th, d, dh (dentals)
       // l, sh, Sh, s (others)
-      // Nukta consonants k*, kh*, g*, j*, D*, Dh*
       const patterns = [
         'k',
         'kh',
@@ -216,19 +195,19 @@ export class HindiEngine extends BaseLanguageEngine {
         'Sh',
         'S',
         's',
-        'k*',
-        'kh*',
-        'g*',
-        'j*',
-        'D*',
-        'Dh*',
-        // Note: 'r' is not included here as it should not trigger anusvara
       ];
       return patterns.some((pattern) => nextChars.startsWith(pattern));
     } else if (char === 'm') {
-      // m converts to anusvara before p, ph, b, bh, v
-      // Also before nukta ph*
-      const patterns = ['p', 'ph', 'f', 'b', 'bh', 'v', 'w', 'ph*'];
+      // m converts to anusvara before p, ph, v, w
+      // For b, bh: convert to anusvara only at word end, otherwise conjunct
+      if (nextChars.startsWith('b') || nextChars.startsWith('bh')) {
+        // Check if this mb/mbh is at word end
+        const bPattern = nextChars.startsWith('bh') ? 'bh' : 'b';
+        const afterB = nextChars.substring(bPattern.length);
+        const isAtWordEnd = afterB === '' || /^[\s.,!?;:()]/.test(afterB);
+        return isAtWordEnd;
+      }
+      const patterns = ['p', 'ph', 'f', 'v', 'w'];
       return patterns.some((pattern) => nextChars.startsWith(pattern));
     }
 
@@ -245,25 +224,16 @@ export class HindiEngine extends BaseLanguageEngine {
       let consumed = 0;
 
       // Handle special patterns first (longest first)
-      if (!found) {
-        for (const pattern of this.getSpecialPatterns()) {
-          if (i + pattern.length <= text.length) {
-            const substr = text.substring(i, i + pattern.length);
-            if (substr === pattern) {
-              // Special handling for @: only replace if not surrounded by word chars
-              if (pattern === '@') {
-                result += '॰';
-                consumed = pattern.length;
-                found = true;
-                break;
-              }
-              const specialChar = this.getSpecialChar(pattern);
-              if (specialChar) {
-                result += specialChar;
-                consumed = pattern.length;
-                found = true;
-                break;
-              }
+      for (const pattern of this.getSpecialPatterns()) {
+        if (i + pattern.length <= text.length) {
+          const substr = text.substring(i, i + pattern.length);
+          if (substr === pattern) {
+            const specialChar = this.getSpecialChar(pattern);
+            if (specialChar) {
+              result += specialChar;
+              consumed = pattern.length;
+              found = true;
+              break;
             }
           }
         }
@@ -297,9 +267,16 @@ export class HindiEngine extends BaseLanguageEngine {
           if (i + pattern.length <= text.length) {
             const substr = text.substring(i, i + pattern.length);
             // Only check vocalic consonants here (patterns that look like consonants but are vowels)
-            const isVocalicConsonant = ['Ri', 'RI', 'Li-', 'LI-'].includes(
-              pattern,
-            );
+            const isVocalicConsonant = [
+              'Ru',
+              'Ri',
+              'RU',
+              'RI',
+              'Lu-',
+              'Li-',
+              'LU-',
+              'LI-',
+            ].includes(pattern);
             if (substr === pattern && isVocalicConsonant) {
               const standaloneVowel = this.getVowel(pattern, true);
               if (standaloneVowel) {
@@ -321,22 +298,7 @@ export class HindiEngine extends BaseLanguageEngine {
             if (substr === pattern) {
               const consonant = this.getConsonant(pattern);
               if (consonant) {
-                // Special handling for K in mixed case: if it's part of a mixed case word, use 'क' instead of 'क़'
-                let finalConsonant = consonant;
-                if (pattern === 'K') {
-                  // Check if this is part of a mixed case word (likely not nukta)
-                  const wordStart = i;
-                  const wordEnd = text.indexOf(' ', i);
-                  const word =
-                    wordEnd === -1
-                      ? text.substring(wordStart)
-                      : text.substring(wordStart, wordEnd);
-                  if (/[A-Z]/.test(word) && /[a-z]/.test(word)) {
-                    finalConsonant = 'क'; // Use regular ka instead of nukta
-                  }
-                }
-
-                result += finalConsonant;
+                result += consonant;
                 consumed = pattern.length;
 
                 // Look for following vowel
@@ -451,9 +413,16 @@ export class HindiEngine extends BaseLanguageEngine {
             const substr = text.substring(i, i + pattern.length);
             if (substr === pattern) {
               // Special handling for vocalic consonants - they can appear anywhere
-              const isVocalicConsonant = ['Ri', 'RI', 'Li-', 'LI-'].includes(
-                pattern,
-              );
+              const isVocalicConsonant = [
+                'Ru',
+                'Ri',
+                'RU',
+                'RI',
+                'Lu-',
+                'Li-',
+                'LU-',
+                'LI-',
+              ].includes(pattern);
 
               if (
                 isWordStart ||

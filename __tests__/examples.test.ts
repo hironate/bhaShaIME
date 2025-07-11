@@ -1,4 +1,4 @@
-import { BhaSha } from '../src/bhasha-engine';
+import { BhaSha } from '../src';
 
 describe('Pre-populated Examples', () => {
   let bhaSha: BhaSha;
