@@ -1,4 +1,9 @@
-# A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more
+# BhaSha IME - React Plugin for Indian Language Transliteration
+
+[![npm version](https://badge.fury.io/js/@bhashaime%2Fcore.svg)](https://badge.fury.io/js/@bhashaime%2Fcore)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+🌐 **[Website & Live Demo](https://bhashaime.vercel.app)** | 📚 **[Documentation](https://bhashaime.vercel.app/docs)** | 🚀 **[Examples](https://bhashaime.vercel.app/docs#examples)**
 
 A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more. Built from scratch in TypeScript with comprehensive test coverage.
 

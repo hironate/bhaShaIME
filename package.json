@@ -1,6 +1,6 @@
 {
   "name": "@bhashaime/core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "A React plugin for Indian language transliteration with support for Gujarati, Hindi, and more",
   "main": "dist/index.js",
@@ -32,7 +32,7 @@
     "devanagari",
     "gujarati-script"
   ],
-  "author": "Your Name",
+  "author": "Hiren Kavad",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -65,5 +65,5 @@
   "bugs": {
     "url": "https://github.com/hironate/bhaShaIME/issues"
   },
-  "homepage": "https://github.com/hironate/bhaShaIME#readme"
+  "homepage": "https://bhashaime.vercel.app"
 }
