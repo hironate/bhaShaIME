@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Github, ExternalLink, Heart } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -165,7 +166,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-600">
-            © 2024 BhaSha IME. Built with{' '}
+            © {currentYear} BhaSha IME. Built with{' '}
             <Heart size={14} className="inline text-red-500" /> for the Indian
             language community.
           </p>
