@@ -8,9 +8,9 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BhaSha IME - Indian Language Transliteration for React',
+  title: 'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
   description:
-    'A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more. Built with TypeScript and comprehensive test coverage.',
+    'Free and open-source JavaScript and React plugin to type in 23 Indian languages. BhaSha IME is a powerful tool for real-time transliteration, supporting languages like Gujarati, Hindi, and more.',
   keywords: [
     'react',
     'transliteration',
@@ -20,6 +20,15 @@ export const metadata: Metadata = {
     'ime',
     'input method',
     'typescript',
+    'javascript',
+    'js plugin',
+    'react plugin',
+    'typing software',
+    'free typing software',
+    'open source typing software',
+    'indian language typing',
+    '23 indian languages',
+    'indic typing',
   ],
   authors: [{ name: 'BhaSha IME Team' }],
   creator: 'BhaSha IME Team',
@@ -67,7 +76,8 @@ export const metadata: Metadata = {
   },
   manifest: '/favicon/site.webmanifest',
   openGraph: {
-    title: 'BhaSha IME - Indian Language Transliteration for React',
+    title:
+      'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
     description:
       'A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more.',
     url: 'https://bhashaime.dev',
@@ -77,7 +87,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BhaSha IME - Indian Language Transliteration for React',
+    title:
+      'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
     description:
       'A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more.',
   },

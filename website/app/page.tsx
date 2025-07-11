@@ -7,6 +7,7 @@ import {
   Shield,
   Cpu,
   Users,
+  Github,
 } from 'lucide-react';
 import LiveDemo from '@/components/LiveDemo';
 import CodeExample from '@/components/CodeExample';
@@ -18,16 +19,16 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Indian language{' '}
+            Free & Open Source{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              transliteration
+              Indian Language
             </span>{' '}
-            for React
+            Typing Software
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            A powerful, lightweight React plugin for real-time Indian language
-            transliteration. Type in English, get beautiful scripts instantly.
-            Built with TypeScript.
+            A powerful, lightweight JS & React plugin for real-time Indian
+            language transliteration. Type in English and get beautiful scripts
+            in 23+ languages instantly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -147,8 +148,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Open Source Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Free and Open-Source for Everyone
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              BhaSha IME is committed to breaking down language barriers. Our
+              software is, and always will be, free and open-source.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Shield className="text-green-600" size={32} />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Truly Free
+              </h3>
+              <p className="text-gray-600 text-sm">
+                No hidden costs, no premium versions. Use it for personal or
+                commercial projects without any fees.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Github className="text-blue-600" size={32} />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Open Source
+              </h3>
+              <p className="text-gray-600 text-sm">
+                The code is publicly available on GitHub. We encourage you to
+                contribute, inspect, and customize it to your needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Live Demo */}
-      <section id="demo" className="py-20">
+      <section id="demo" className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -164,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Code Examples */}
-      <section className="bg-gray-50 py-20">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -180,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="bg-gray-50 py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Ready to add Indian language support?

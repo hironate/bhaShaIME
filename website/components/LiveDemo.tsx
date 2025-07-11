@@ -8,19 +8,21 @@ import {
   SupportedLanguage,
   BhaShaInputRef,
   BhaShaTextareaRef,
+  useDirectInputTransliteration,
 } from '@bhashaime/core';
 
 export default function LiveDemo() {
   const [selectedLanguage, setSelectedLanguage] =
     useState<SupportedLanguage>('gujarati');
-  const [activeTab, setActiveTab] = useState<'input' | 'textarea' | 'hook'>(
-    'input',
-  );
+  const [activeTab, setActiveTab] = useState<
+    'input' | 'textarea' | 'hook' | 'direct'
+  >('input');
 
   // Refs for controlling demo components
   const inputDemoRef = useRef<{ setInput: (text: string) => void }>(null);
   const textareaDemoRef = useRef<{ setInput: (text: string) => void }>(null);
   const hookDemoRef = useRef<{ setInput: (text: string) => void }>(null);
+  const directDemoRef = useRef<{ setInput: (text: string) => void }>(null);
 
   const languages = [
     { code: 'gujarati' as const, name: 'Gujarati', nativeName: 'ગુજરાતી' },
@@ -81,6 +83,16 @@ export default function LiveDemo() {
           >
             Hook
           </button>
+          <button
+            onClick={() => setActiveTab('direct')}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              activeTab === 'direct'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            Direct Input
+          </button>
         </div>
       </div>
 
@@ -105,6 +117,13 @@ export default function LiveDemo() {
             key={selectedLanguage}
             language={selectedLanguage}
             ref={hookDemoRef}
+          />
+        )}
+        {activeTab === 'direct' && (
+          <DirectInputDemo
+            key={selectedLanguage}
+            language={selectedLanguage}
+            ref={directDemoRef}
           />
         )}
       </div>
@@ -168,6 +187,8 @@ export default function LiveDemo() {
       textareaDemoRef.current.setInput(text);
     } else if (activeTab === 'hook' && hookDemoRef.current) {
       hookDemoRef.current.setInput(text);
+    } else if (activeTab === 'direct' && directDemoRef.current) {
+      directDemoRef.current.setInput(text);
     }
   }
 }
@@ -299,3 +320,57 @@ const HookDemo = forwardRef<
 });
 
 HookDemo.displayName = 'HookDemo';
+
+const DirectInputDemo = forwardRef<
+  { setInput: (text: string) => void },
+  { language: SupportedLanguage }
+>(({ language }, ref) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { bhaSha } = useBhaShaIME();
+
+  useDirectInputTransliteration({
+    ref: inputRef,
+    language: language,
+  });
+
+  useImperativeHandle(ref, () => ({
+    setInput: (text: string) => {
+      if (inputRef.current) {
+        // Since this is a direct hook, we can't just set the output.
+        // We simulate the user typing the raw transliteration string.
+        const engine = bhaSha.getEngine(language);
+        if (engine) {
+          inputRef.current.value = engine.transliterateText(text);
+          // Manually dispatch an input event if needed by other listeners,
+          // though the hook itself doesn't require it.
+          const event = new Event('input', { bubbles: true });
+          inputRef.current.dispatchEvent(event);
+        }
+      }
+    },
+  }));
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Type directly in the input field:
+        </label>
+        <input
+          ref={inputRef}
+          placeholder={`Type in English to see ${language} script...`}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+      </div>
+      <div>
+        <p className="text-sm text-gray-600">
+          With <code>useDirectInputTransliteration</code>, the transliteration
+          happens directly in the input field you provide. There is no separate
+          output state to manage.
+        </p>
+      </div>
+    </div>
+  );
+});
+
+DirectInputDemo.displayName = 'DirectInputDemo';
