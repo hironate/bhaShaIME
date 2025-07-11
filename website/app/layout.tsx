@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bhashaime.hirenkavad.com'),
   title: 'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
   description:
     'Free and open-source JavaScript and React plugin to type in 23 Indian languages. BhaSha IME is a powerful tool for real-time transliteration, supporting languages like Gujarati, Hindi, and more.',
@@ -33,48 +34,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'BhaSha IME Team' }],
   creator: 'BhaSha IME Team',
   publisher: 'BhaSha IME',
-  icons: {
-    icon: [
-      { url: '/images/favicon.ico', sizes: '32x32' },
-      { url: '/images/favicon.svg', type: 'image/svg+xml' },
-      { url: '/images/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-      {
-        url: '/images/web-app-manifest-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-      {
-        url: '/images/web-app-manifest-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-    ],
-    shortcut: '/images/favicon.ico',
-    apple: [
-      {
-        url: '/images/apple-touch-icon.png',
-        sizes: '180x180',
-        type: 'image/png',
-      },
-    ],
-    other: [
-      {
-        rel: 'apple-touch-icon-precomposed',
-        url: '/images/apple-touch-icon.png',
-      },
-      {
-        rel: 'mask-icon',
-        url: '/images/favicon.svg',
-        color: '#3b82f6',
-      },
-      {
-        rel: 'icon',
-        type: 'image/svg+xml',
-        url: '/images/favicon.svg',
-      },
-    ],
-  },
-  manifest: '/images/site.webmanifest',
   openGraph: {
     title:
       'BhaSha IME - Free & Open Source JS Plugin for Indian Language Typing',
@@ -106,6 +65,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         <meta
           name="google-site-verification"
           content="m-x-QdOdaJRPgnHhSThB5EI3Ik36CrZK7X_zc_A_vIc"
@@ -118,6 +79,14 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="BhaSha IME" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="BhaSha IME" />
+        <meta
+          name="description"
+          content="A powerful React plugin for real-time Indian language transliteration with support for Gujarati, Hindi, and more."
+        />
+        <meta name="background-color" content="#ffffff" />
+        <meta name="display" content="standalone" />
+        <meta name="scope" content="/" />
+        <meta name="start_url" content="/" />
       </head>
       <body className={inter.className}>
         <Navigation />
