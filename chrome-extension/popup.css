@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  width: 220px;
+  min-height: 240px;
+}
+
+.container {
+  background: white;
+  border-radius: 8px;
+  margin: 6px;
+  padding: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 3px;
+}
+
+header h1 {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 3px;
+}
+
+header p {
+  color: #718096;
+  font-size: 10px;
+}
+
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.language-option:hover {
+  border-color: #667eea;
+  background: #f7fafc;
+}
+
+.language-option.active {
+  border-color: #667eea;
+  background: #edf2f7;
+}
+
+.language-native {
+  font-weight: 500;
+  color: #2d3748;
+  font-size: 12px;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  transition: background 0.2s ease;
+}
+
+.language-option.active .status-indicator {
+  background: #48bb78;
+}
+
+.footer {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.website-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #667eea;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.website-link:hover {
+  color: #4c51bf;
+  text-decoration: underline;
+}
+
+.website-icon {
+  font-size: 12px;
+}
+
+/* Animation for status changes */
+@keyframes statusChange {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.status-indicator.changing {
+  animation: statusChange 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 240px) {
+  .container {
+    margin: 4px;
+    padding: 10px;
+  }
+
+  body {
+    width: 200px;
+  }
+}
