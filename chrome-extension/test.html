@@ -10,164 +10,148 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
         }
         .test-section {
-            margin-bottom: 30px;
-        }
-        .test-section h2 {
-            color: #555;
-            margin-bottom: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         input, textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
         }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
         }
-        .instructions {
-            background: #e8f4f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .examples {
-            background: #f0f8ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .examples h3 {
-            margin-top: 0;
-            color: #333;
-        }
-        .examples p {
-            margin: 5px 0;
-            font-family: monospace;
+        button:hover {
+            background-color: #0056b3;
         }
         .status {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #667eea;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
         }
     </style>
 </head>
 <body>
-    <div class="status" id="status">Extension Status: Checking...</div>
+    <h1>bhaShaIME Extension Test</h1>
     
-    <div class="container">
-        <h1>🔤 bhaShaIME Extension Test</h1>
-        
-        <div class="instructions">
-            <h3>Instructions:</h3>
-            <ol>
-                <li>Make sure the bhaShaIME extension is installed and active</li>
-                <li>Click the extension icon in the toolbar to select a language</li>
-                <li>Type in the text fields below using English characters</li>
-                <li>Your text should be converted to the selected Indian script</li>
-            </ol>
-        </div>
+    <div class="test-section">
+        <h2>Extension Status</h2>
+        <div id="status" class="status info">Checking extension status...</div>
+        <button onclick="checkStatus()">Check Status</button>
+        <button onclick="testTransliteration()">Test Transliteration</button>
+    </div>
 
-        <div class="test-section">
-            <h2>Test Input Field</h2>
-            <input type="text" id="testInput" placeholder="Type here... (e.g., 'namaste')">
-        </div>
+    <div class="test-section">
+        <h2>Input Test</h2>
+        <label for="testInput">Type in English to test transliteration:</label>
+        <input type="text" id="testInput" placeholder="Type 'namaste' to see transliteration">
+        <div id="inputResult" class="status info">Start typing to see transliteration...</div>
+    </div>
 
-        <div class="test-section">
-            <h2>Test Textarea</h2>
-            <textarea id="testTextarea" rows="4" placeholder="Type here... (e.g., 'namaste aur alvida')"></textarea>
-        </div>
+    <div class="test-section">
+        <h2>Textarea Test</h2>
+        <label for="testTextarea">Multi-line input test:</label>
+        <textarea id="testTextarea" rows="5" placeholder="Type multiple lines to test transliteration"></textarea>
+        <div id="textareaResult" class="status info">Start typing to see transliteration...</div>
+    </div>
 
-        <div class="examples">
-            <h3>Test Examples:</h3>
-            <p><strong>For Hindi:</strong></p>
-            <p>namaste → नमस्ते</p>
-            <p>dhanyawad → धन्यवाद</p>
-            <p>bharat → भारत</p>
-            
-            <p><strong>For Gujarati:</strong></p>
-            <p>namaste → નમસ્તે</p>
-            <p>dhanyawad → ધન્યવાદ</p>
-            <p>bharat → ભારત</p>
-            
-            <p><strong>For English:</strong></p>
-            <p>hello → hello (no change)</p>
-        </div>
-
-        <div class="test-section">
-            <h2>Debug Information</h2>
-            <div id="debugInfo">
-                <p>Loading debug information...</p>
-            </div>
-        </div>
+    <div class="test-section">
+        <h2>Language Control</h2>
+        <button onclick="setLanguage('gujarati')">Gujarati</button>
+        <button onclick="setLanguage('hindi')">Hindi</button>
+        <button onclick="setLanguage('english')">English</button>
+        <div id="languageStatus" class="status info">Current language: English</div>
     </div>
 
     <script>
-        // Debug function to check extension status
-        function checkExtensionStatus() {
-            const statusEl = document.getElementById('status');
-            const debugEl = document.getElementById('debugInfo');
+        // Test functions
+        function checkStatus() {
+            const statusDiv = document.getElementById('status');
             
-            // Check if extension content script is loaded
-            if (window.bhaShaIMEContentScript) {
-                statusEl.textContent = 'Extension Status: Active';
-                statusEl.style.background = '#4CAF50';
-                
-                const status = window.bhaShaIMEContentScript.getStatus();
-                debugEl.innerHTML = `
-                    <p><strong>Content Script:</strong> Loaded ✓</p>
-                    <p><strong>Injector Active:</strong> ${status.active ? 'Yes ✓' : 'No ✗'}</p>
-                    <p><strong>Current Language:</strong> ${status.language}</p>
+            if (window.bhaShaIMEDebug) {
+                const status = window.bhaShaIMEDebug.getStatus();
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = `
+                    <strong>Extension Status:</strong><br>
+                    Active: ${status.active}<br>
+                    Language: ${status.language}<br>
+                    Ready: ${status.ready}<br>
+                    Instance: ${status.originalInstance}
                 `;
             } else {
-                statusEl.textContent = 'Extension Status: Not Active';
-                statusEl.style.background = '#f44336';
-                
-                debugEl.innerHTML = `
-                    <p><strong>Content Script:</strong> Not loaded ✗</p>
-                    <p><strong>Injector Active:</strong> Unknown</p>
-                    <p><strong>Current Language:</strong> Unknown</p>
-                    <p><em>Make sure the extension is installed and enabled</em></p>
-                `;
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = 'Extension not loaded or debug functions not available';
             }
         }
 
-        // Check status when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(checkExtensionStatus, 500);
-            setInterval(checkExtensionStatus, 2000);
+        function testTransliteration() {
+            const statusDiv = document.getElementById('status');
+            
+            if (window.bhaShaIMEDebug) {
+                const result = window.bhaShaIMEDebug.testTransliteration('namaste');
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = `Test transliteration: "namaste" → "${result}"`;
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = 'Extension not ready for transliteration test';
+            }
+        }
+
+        function setLanguage(lang) {
+            const statusDiv = document.getElementById('languageStatus');
+            
+            if (window.bhaShaIMEDebug) {
+                window.bhaShaIMEDebug.setLanguage(lang);
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = `Language changed to: ${lang}`;
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = 'Extension not available for language change';
+            }
+        }
+
+        // Monitor input changes
+        document.getElementById('testInput').addEventListener('input', function(e) {
+            const resultDiv = document.getElementById('inputResult');
+            resultDiv.className = 'status info';
+            resultDiv.innerHTML = `Input: "${e.target.value}"`;
         });
 
-        // Add event listeners for testing
-        document.getElementById('testInput').addEventListener('input', (e) => {
-            console.log('Input event:', e.target.value);
+        document.getElementById('testTextarea').addEventListener('input', function(e) {
+            const resultDiv = document.getElementById('textareaResult');
+            resultDiv.className = 'status info';
+            resultDiv.innerHTML = `Input: "${e.target.value}"`;
         });
 
-        document.getElementById('testTextarea').addEventListener('input', (e) => {
-            console.log('Textarea event:', e.target.value);
-        });
+        // Initial status check
+        setTimeout(checkStatus, 1000);
     </script>
 </body>
 </html> 

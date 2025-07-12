@@ -35,19 +35,33 @@ async function initializeContentScript() {
 async function loadBhaShaIMEInjector() {
   return new Promise((resolve, reject) => {
     try {
-      // Create and inject the injector script
-      injectorScript = document.createElement('script');
-      injectorScript.src = chrome.runtime.getURL('injector.js');
-      injectorScript.onload = () => {
-        bhashaIMEActive = true;
-        resolve();
+      // First, inject the IME engine script
+      const imeScript = document.createElement('script');
+      imeScript.src = chrome.runtime.getURL('ime-injector.js');
+      imeScript.onload = () => {
+        console.log('bhaShaIME IME engine loaded successfully');
+
+        // Then inject the injector script
+        injectorScript = document.createElement('script');
+        injectorScript.src = chrome.runtime.getURL('injector.js');
+        injectorScript.onload = () => {
+          bhashaIMEActive = true;
+          console.log('bhaShaIME injector loaded successfully');
+          resolve();
+        };
+        injectorScript.onerror = () => {
+          reject(new Error('Failed to load bhaShaIME injector'));
+        };
+
+        // Inject the injector script
+        (document.head || document.documentElement).appendChild(injectorScript);
       };
-      injectorScript.onerror = () => {
-        reject(new Error('Failed to load bhaShaIME injector'));
+      imeScript.onerror = () => {
+        reject(new Error('Failed to load bhaShaIME IME engine'));
       };
 
-      // Inject into the page
-      (document.head || document.documentElement).appendChild(injectorScript);
+      // Inject the IME engine script first
+      (document.head || document.documentElement).appendChild(imeScript);
     } catch (error) {
       reject(error);
     }
@@ -168,6 +182,17 @@ window.addEventListener('beforeunload', () => {
       console.log('Error removing injector script:', error);
     }
   }
+  // Also cleanup any IME engine scripts
+  const imeScripts = document.querySelectorAll(
+    'script[src*="ime-injector.js"]',
+  );
+  imeScripts.forEach((script) => {
+    try {
+      script.remove();
+    } catch (error) {
+      console.log('Error removing IME script:', error);
+    }
+  });
 });
 
 // Export for debugging

@@ -1,5 +1,5 @@
 // bhaShaIME Injector Script for Chrome Extension
-// This script loads the original bhaShaIME from CDN and adds extension communication
+// This script handles communication and initialization for the bhaShaIME
 
 (function () {
   'use strict';
@@ -10,40 +10,16 @@
   }
   window.bhaShaIMEExtensionLoaded = true;
 
-  console.log('bhaShaIME Extension: Loading original bhaShaIME from CDN...');
-
-  // Load the original bhaShaIME from CDN
-  function loadOriginalBhaShaIME() {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src =
-        'https://cdn.jsdelivr.net/npm/@bhashaime/core/dist/bhasha-ime-injector.js';
-      script.onload = () => {
-        console.log(
-          'bhaShaIME Extension: Original bhaShaIME loaded successfully',
-        );
-        resolve();
-      };
-      script.onerror = () => {
-        console.error('bhaShaIME Extension: Failed to load original bhaShaIME');
-        reject(new Error('Failed to load bhaShaIME from CDN'));
-      };
-
-      (document.head || document.documentElement).appendChild(script);
-    });
-  }
+  console.log('bhaShaIME Extension: Injector script loaded');
 
   // Initialize the extension
   async function initializeExtension() {
     try {
-      // Load the original bhaShaIME
-      await loadOriginalBhaShaIME();
-
-      // Wait for the original instance to be available
+      // Wait for the bhaShaIME instance to be available
       await new Promise((resolve) => {
         const checkForInstance = () => {
           if (window.bhashaIME) {
-            console.log('bhaShaIME Extension: Original instance found');
+            console.log('bhaShaIME Extension: bhaShaIME instance found');
             resolve();
           } else {
             setTimeout(checkForInstance, 100);
@@ -131,6 +107,4 @@
   } else {
     initializeExtension();
   }
-
-  console.log('bhaShaIME Extension: Injector script loaded');
 })();

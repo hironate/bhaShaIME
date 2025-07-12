@@ -1,137 +1,119 @@
 # bhaShaIME Chrome Extension
 
-A Chrome extension that enables typing in Hindi, Gujarati, and other Indian languages using an English keyboard. This extension uses the bhaShaIME transliteration engine to convert English text to Indian scripts in real-time.
+A Chrome extension that provides Indic language input method editor (IME) functionality for typing in Hindi, Gujarati, and other Indian languages using English keyboard.
 
 ## Features
 
-- **Multi-language Support**: Hindi (Devanagari), Gujarati, and English
-- **Real-time Transliteration**: Type in English and see Indian script instantly
-- **Universal Compatibility**: Works on any website with text input fields
-- **Easy Language Switching**: Quick toggle between languages via popup
-- **Seamless Integration**: No need to change system keyboard settings
+- **Multi-language Support**: Hindi, Gujarati, and English
+- **Real-time Transliteration**: Type in English and get instant transliteration
+- **Works on Any Website**: Including Google Docs, Gmail, and other web applications
+- **Easy Language Switching**: Quick language selection via extension popup
 
 ## Installation
 
-### Development Installation
+1. **Load the Extension**:
 
-1. Clone the repository and navigate to the `chrome-extension` directory
-2. Add icon files to the `icons/` directory (see `icons/README.md` for details)
-3. Open Chrome and go to `chrome://extensions/`
-4. Enable "Developer mode" (toggle in top right)
-5. Click "Load unpacked" and select the `chrome-extension` directory
-6. The extension should now appear in your extensions list
+   - Open Chrome and go to `chrome://extensions/`
+   - Enable "Developer mode" (toggle in top right)
+   - Click "Load unpacked" and select the `chrome-extension` folder
 
-### Production Installation
+2. **Verify Installation**:
+   - The extension icon should appear in your Chrome toolbar
+   - Click the icon to see the language selector popup
 
-The extension will be available on the Chrome Web Store once published.
+## Testing
 
-## Usage
+### Method 1: Use the Test Page
 
-1. **Activate the Extension**: Click the bhaShaIME icon in the Chrome toolbar
-2. **Select Language**: Choose from English, Hindi, or Gujarati in the popup
-3. **Start Typing**: Click on any text field on any website and start typing in English
-4. **Real-time Conversion**: Your English text will be converted to the selected Indian script
+1. Navigate to `chrome-extension://[extension-id]/test.html`
+2. The test page will show the extension status and allow you to test transliteration
+3. Try typing in the input fields to see real-time transliteration
 
-### Examples
+### Method 2: Test on Any Website
 
-- **Hindi**: Type "namaste" → नमस्ते
-- **Gujarati**: Type "namaste" → નમસ્તે
-- **English**: Type "hello" → hello (no conversion)
+1. Go to any website with text input (Google Docs, Gmail, etc.)
+2. Click the extension icon and select a language (Gujarati or Hindi)
+3. Start typing in English - you should see transliteration happening
 
-## Supported Languages
+### Method 3: Debug Console
 
-| Language | Script     | Code       |
-| -------- | ---------- | ---------- |
-| English  | Latin      | `english`  |
-| Hindi    | Devanagari | `hindi`    |
-| Gujarati | Gujarati   | `gujarati` |
+Open the browser console and use these debug functions:
 
-## Files Structure
+```javascript
+// Check extension status
+window.bhaShaIMEDebug.getStatus();
 
+// Test transliteration
+window.bhaShaIMEDebug.testTransliteration('namaste');
+
+// Change language
+window.bhaShaIMEDebug.setLanguage('hindi');
 ```
-chrome-extension/
-├── manifest.json          # Extension manifest
-├── popup.html             # Language selection popup
-├── popup.css              # Popup styling
-├── popup.js               # Popup functionality
-├── background.js          # Background service worker
-├── content.js             # Content script
-├── injector.js            # Transliteration engine
-├── icons/                 # Extension icons
-│   ├── icon16.png
-│   ├── icon32.png
-│   ├── icon48.png
-│   └── icon128.png
-└── README.md              # This file
-```
-
-## Technical Details
-
-### Architecture
-
-1. **Background Script**: Manages extension lifecycle and inter-component communication
-2. **Content Script**: Runs on web pages and manages the injector
-3. **Injector Script**: Contains the transliteration engine and handles keyboard input
-4. **Popup**: Provides the user interface for language selection
-
-### Permissions
-
-- `activeTab`: To inject content scripts into active tabs
-- `storage`: To save user language preferences
-- `host_permissions`: To run on all websites
-
-## Development
-
-### Building from Source
-
-The extension uses the bhaShaIME transliteration engine from the parent project. The `injector.js` file contains a bundled version of the engine.
-
-### Testing
-
-1. Load the extension in Chrome
-2. Navigate to any website with text input
-3. Test transliteration with different languages
-4. Verify language switching works correctly
-
-### Debugging
-
-- Open Chrome DevTools on any page to see content script logs
-- Use the extension's popup to see popup script logs
-- Check the background script logs in `chrome://extensions/` → Developer mode → Service worker
 
 ## Troubleshooting
 
-### Extension Not Working
+### Extension Not Working on Google Docs
 
-1. Check that the extension is enabled in `chrome://extensions/`
-2. Refresh the webpage after installing/updating the extension
-3. Check browser console for error messages
+- The extension should now work on Google Docs with the updated approach
+- If you still see issues, check the browser console for error messages
+- Make sure the extension is enabled and has permissions for the site
 
 ### Transliteration Not Working
 
-1. Ensure a supported language is selected
-2. Try clicking in the text field and typing again
-3. Check that the website allows text input modifications
+1. Check if the extension is active (icon should be colored)
+2. Verify the selected language in the popup
+3. Try refreshing the page
+4. Check browser console for any error messages
 
-### Language Not Switching
+### Common Issues
 
-1. Verify the extension popup shows the correct language
-2. Try refreshing the webpage
-3. Check that the extension has proper permissions
+- **CSP Errors**: The extension now uses local scripts to avoid Content Security Policy issues
+- **Script Loading**: Both IME engine and injector scripts are loaded by the content script
+- **Language Switching**: Use the extension popup or debug functions to change languages
 
-## Contributing
+## Development
 
-This extension is part of the bhaShaIME project. To contribute:
+### File Structure
 
-1. Fork the main repository
-2. Make changes in the `chrome-extension/` directory
-3. Test thoroughly across different websites
-4. Submit a pull request
+```
+chrome-extension/
+├── manifest.json          # Extension configuration
+├── background.js          # Service worker
+├── content.js            # Content script (injects into pages)
+├── injector.js           # Communication layer
+├── ime-injector.js       # IME engine (transliteration logic)
+├── popup.html/js/css     # Extension popup UI
+├── test.html             # Test page
+└── icons/                # Extension icons
+```
+
+### Key Components
+
+- **content.js**: Manages script injection and communication
+- **injector.js**: Handles communication between extension and IME
+- **ime-injector.js**: Contains the actual transliteration logic
+- **background.js**: Manages extension state and storage
+
+## Supported Languages
+
+- **Gujarati**: Type in English, get Gujarati script
+- **Hindi**: Type in English, get Devanagari script
+- **English**: No transliteration (pass-through)
+
+## Examples
+
+### Gujarati
+
+- `namaste` → `નમસ્તે`
+- `dhanyawad` → `ધન્યવાદ`
+- `bharat` → `ભારત`
+
+### Hindi
+
+- `namaste` → `नमस्ते`
+- `dhanyawad` → `धन्यवाद`
+- `bharat` → `भारत`
 
 ## License
 
-This extension is part of the bhaShaIME project and follows the same licensing terms.
-
-## Support
-
-For support, bug reports, or feature requests, please use the main bhaShaIME repository's issue tracker.
+This extension is part of the bhaShaIME project.
