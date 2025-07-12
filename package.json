@@ -19,7 +19,8 @@
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run clean && npm run build && npm run build:injector",
     "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "package": "zip -r bhasha-ime-extension.zip chrome-extension/* -x \"*.DS_Store\" \"*.git*\""
   },
   "keywords": [
     "react",

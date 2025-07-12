@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "bhaShaIME - Indic Language Input",
+  "version": "1.0.0",
+  "description": "Type in Hindi, Gujarati, and other Indian languages using English keyboard",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "bhaShaIME Language Selector",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injector.js", "ime-injector.js", "test.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
